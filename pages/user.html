@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<div ng-controller="UserController">
+    <div id="uploadFile">
+        <input type='file' file-model="myFile" id="myFile"/>
+        <span id='val'></span>
+        <span id='button' class="btn green" ng-click="selectUploadFile()">Select File</span>
+    </div>
+    <br/>
+    <img id="imagePreView" ng-src="{{thumbnail.dataUrl}}"/>
+    <div ng-add-html content-html="dataBtnRemoveImagePreView"></div>
+    <br/>
+</div>

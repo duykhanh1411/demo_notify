@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
+Version: 3.7.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+
+<html lang="en" data-ng-app="MetronicApp">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <title data-ng-bind="'Metronic AngularJS | ' + $state.current.data.pageTitle"></title>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN DYMANICLY LOADED CSS FILES(all plugin and page related styles must be loaded between GLOBAL and THEME css files ) -->
+    <link id="ng_load_plugins_before"/>
+    <!-- END DYMANICLY LOADED CSS FILES -->
+
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+
+<body ng-controller="AppController"
+      class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load"
+      ng-class="{'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
+
+<!-- BEGIN PAGE SPINNER -->
+<!--KhanhHD remover loading bar process-->
+<div ng-spinner-bar class="page-spinner-bar">
+    <!--<div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>-->
+</div>
+<!-- END PAGE SPINNER -->
+
+<!-- BEGIN HEADER -->
+<div data-ng-include="'Metronic/tpl/header.html'" data-ng-controller="HeaderController"
+     class="page-header navbar navbar-fixed-top">
+</div>
+<!-- END HEADER -->
+<div style="height: 46px"></div>
+<div class="clearfix">
+</div>
+
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <div data-ng-include="'Metronic/tpl/sidebar.html'" data-ng-controller="SidebarController"
+         class="page-sidebar-wrapper">
+    </div>
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+        <div class="page-content page-content-custom">
+            <!-- BEGIN STYLE CUSTOMIZER(optional) -->
+            <!--<div data-ng-include="'Metronic/tpl/theme-panel.html'" data-ng-controller="ThemePanelController"
+                 class="theme-panel hidden-xs hidden-sm">
+            </div>-->
+            <!-- END STYLE CUSTOMIZER -->
+
+            <!-- BEGIN ACTUAL CONTENT -->
+            <div ui-view class="fade-in-up">
+
+            </div>
+            <!-- END ACTUAL CONTENT -->
+        </div>
+    </div>
+    <!-- END CONTENT -->
+
+    <!-- BEGIN QUICK SIDEBAR -->
+    <!--<a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
+    <div data-ng-include="'Metronic/tpl/quick-sidebar.html'" data-ng-controller="QuickSidebarController" class="page-quick-sidebar-wrapper"></div>-->
+    <!-- END QUICK SIDEBAR -->
+</div>
+<!-- END CONTAINER -->
+
+<!-- BEGIN FOOTER -->
+<div data-ng-include="'Metronic/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer">
+</div>
+<!-- END FOOTER -->
+</body>
+<!-- END BODY -->
+</html>

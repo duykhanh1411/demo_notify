@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<div class="row" ng-controller="CompanyController" data-ng-init="init()">
+    <div class="modal modal-wide-md fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" id="closeModal" ng-click="close()" class="close"></button>
+                    <h4 class="modal-title">Create Company</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="#mainPopupCompany" name="formCompany" class="form-horizontal">
+                        <div>
+                            <div class="form-section form-section-custom"></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">ID</label>
+                                        <div class="col-md-9">
+                                            <input type="text" ng-model="data.id" id="popupId" name="popupId"
+                                                   class="form-control form-control-custom"
+                                                   disabled/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">Name</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="date form-control no-spin form-control-custom"
+                                                   ng-model="data.name" id="popupName"
+                                                   name="popupName" maxlength="50"/>
+                                            <div class="form-control-focus"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">Description</label>
+                                        <div class="col-md-9">
+                                            <textarea type="text"
+                                                      class="form-control form-control-custom text-area-custom"
+                                                      rows="7" ng-model="data.description"
+                                                      id="popupDescription" name="popupDescription"
+                                                      maxlength="250">
+                                            </textarea>
+                                            <div class="form-control-focus"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">City</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="date form-control no-spin form-control-custom"
+                                                   ng-model="data.city" id="popupCity"
+                                                   name="popupCity" maxlength="50"/>
+                                            <div class="form-control-focus"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">Zip Code</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="date form-control no-spin form-control-custom"
+                                                   ng-model="dataPopup.zip"
+                                                   id="popupZip" name="popupZip" maxlength="50"/>
+                                            <div class="form-control-focus"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">Country</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control form-control-custom"
+                                                   ng-model="data.country" id="popupCountry"
+                                                   name="popupCountry" maxlength="50"/>
+                                            <div class="form-control-focus"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <!--/row-->
+                        </div>
+                    </form>
+                </div>
+                <div style="height: 100px"></div>
+                <div class="modal-footer">
+                    <button type="submit" id="closeBtn" ng-click="close()" class="btn" ng-click="create()">Cancel</button>
+                    <button type="submit" id="createBtn" class="btn green" ng-click="create()">Create</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+    <div class="col-md-12">
+        <div class="portlet box">
+            <div class="portlet-title portlet-title-custom">
+                <div class="caption page-title page-title-custom">
+                    <h3>Company Master</h3>
+                </div>
+                <div class="tools">
+                </div>
+            </div>
+            <div class="portlet-body portlet-body-custom form">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <button class="btn sbold green" ng-click="showPopupCreate()"> Add New
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            <button class="btn btn-outline dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Tools
+                                <i class="fa fa-angle-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="javascript:;" ng-click="export()">
+                                        <i class="fa fa-file-excel-o"></i> Export to Excel </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="btn-group pull-right">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-table scroll-table-sm margin-left table-responsive-custom">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th style="min-width: 50px"><i class="fa fa-key"></i> Id</th>
+                            <th style="min-width: 85px"><i class="glyphicon glyphicon-user"></i> Name</th>
+                            <th style="min-width: 100px">
+                                <i class="glyphicon glyphicon-equalizer"></i> City
+                            </th>
+                            <th style="min-width: 100px">
+                                <i class="glyphicon glyphicon-barcode"></i> Zip Code
+                            </th>
+                            <th style="min-width: 100px">
+                                <i class="glyphicon glyphicon-map-marker"></i> Country
+                            </th>
+                            <th style="min-width: 100px">
+                                <i class="fa fa-question"></i> Description
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="company in listCompany" ng-click="selectedRow(company)"
+                            id="row_id_{{company.id}}">
+                            <td>{{company.id}}</td>
+                            <td>{{company.name}}</td>
+                            <td>{{company.city}}</td>
+                            <td>{{company.zip}}</td>
+                            <td>{{company.country}}</td>
+                            <td class="text-table-overflow-ellipsis" style="max-width: 100px">{{company.description}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div ng-add-html content-html="dataPagingHtml" class="paging-container margin-left"></div>
+                <div class="clearfix"></div>
+                <form id="mainCompany" name="formCompany" class="form-horizontal">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <label class="custom-label control-label-custom col-md-3">ID</label>
+                                    <div class="col-md-9">
+                                        <input type="text" ng-model="data.id" id="id" name="id"
+                                               class="form-control form-control-custom"
+                                               disabled/>
+                                    </div>
+                                </div>
+                                <div class="form-group form-md-line-input">
+                                    <label class="custom-label control-label-custom col-md-3">Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="date form-control no-spin form-control-custom"
+                                               ng-model="data.name" id="name"
+                                               name="name" maxlength="50"/>
+                                        <div class="form-control-focus"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group form-md-line-input">
+                                    <label class="custom-label control-label-custom col-md-3">Description</label>
+                                    <div class="col-md-9">
+                                            <textarea type="text"
+                                                      class="form-control form-control-custom text-area-custom"
+                                                      rows="3" ng-model="data.description"
+                                                      id="description" name="description"
+                                                      maxlength="250">
+                                            </textarea>
+                                        <div class="form-control-focus"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <label class="custom-label control-label-custom col-md-3">City</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="date form-control no-spin form-control-custom"
+                                               ng-model="data.city" id="city"
+                                               name="city" maxlength="50"/>
+                                        <div class="form-control-focus"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group form-md-line-input">
+                                    <label class="custom-label control-label-custom col-md-3">Zip Code</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="date form-control no-spin form-control-custom"
+                                               ng-model="data.zip"
+                                               id="zip" name="zip" maxlength="50"/>
+                                        <div class="form-control-focus"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group form-md-line-input">
+                                    <label class="custom-label control-label-custom col-md-3">Country</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control form-control-custom"
+                                               ng-model="data.country" id="country"
+                                               name="country" maxlength="50"/>
+                                        <div class="form-control-focus"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                    </div>
+                    <div class="form-group-btn float-right">
+                        <button type="button" class="btn btn-warning" ng-click="update()">Update</button>
+                        <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
+                    </div>
+                </form>
+                <form action="api/public/api/company/exportExcel" method="get" id="exportExcel">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

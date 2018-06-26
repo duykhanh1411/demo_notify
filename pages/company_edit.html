@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<div class="row">
+    <div class="col-md-12 " ng-controller="CompanyEditController" data-ng-init="init()">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Company Master
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                    <!--<a href="#" data-toggle="modal" class="config">
+                    </a>-->
+                    <a href="javascript:;" class="reload">
+                    </a>
+                    <!--<a href="javascript:;" class="remove">
+                    </a>-->
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <div style="height: 40px"></div>
+                <div class="scroll-table margin-left">
+                    <table class="table-style">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>Zip Code</th>
+                            <th>Country</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="company in listCompany" ng-click="selectedRow(company)" id="row_id_{{company.id}}">
+                            <td>{{company.id}}</td>
+                            <td>{{company.name}}</td>
+                            <td>{{company.city}}</td>
+                            <td>{{company.zip}}</td>
+                            <td>{{company.country}}</td>
+                            <td>{{company.description}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div ng-add-html content-html="dataPagingHtml" class="paging-container margin-left"></div>
+                <div class="clearfix"></div>
+                <div class="space-style"></div>
+               <!-- <form name="formCompany" class="form-horizontal">
+                    <div class="form-body-custom">
+                        <div class="form-section form-section-custom"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label-custom col-md-3">ID</label>
+                                    <div class="col-md-9">
+                                        <input type="text" ng-model="data.id" id="id" name="id" class="form-control"
+                                               disabled/>
+                                    </div>
+                                </div>
+                            </div>
+                            &lt;!&ndash;/span&ndash;&gt;
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label-custom col-md-3">City</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" ng-model="data.city" id="city"
+                                               name="city" maxlength="9"/>
+                                    </div>
+                                </div>
+                            </div>
+                            &lt;!&ndash;/span&ndash;&gt;
+                        </div>
+                        &lt;!&ndash;/row&ndash;&gt;
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label-custom col-md-3">Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" ng-model="data.name" id="name"
+                                               name="name" maxlength="9"/>
+                                    </div>
+                                </div>
+                            </div>
+                            &lt;!&ndash;/span&ndash;&gt;
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label-custom col-md-3">Zip Code</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" ng-model="data.zip"
+                                               id="zip" name="zip" maxlength="9"/>
+                                    </div>
+                                </div>
+                            </div>
+                            &lt;!&ndash;/span&ndash;&gt;
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label-custom col-md-3">Description</label>
+                                    <div class="col-md-9">
+                                        <textarea type="text" class="form-control text-area-custom" ng-model="data.description"
+                                                  id="description" name="description"
+                                                  maxlength="250"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label-custom col-md-3">Country</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" ng-model="data.country" id="country"
+                                               name="country" maxlength="9"/>
+                                    </div>
+                                </div>
+                            </div>
+                            &lt;!&ndash;/span&ndash;&gt;
+                            &lt;!&ndash;/span&ndash;&gt;
+                        </div>
+                        &lt;!&ndash;/row&ndash;&gt;
+                    </div>
+                    <div class="form-actions" style="border-top: 1px solid #e5e5e5; background: #f5f5f5">
+                        <div class="form-group-btn">
+                            <button type="submit" class="btn green" ng-click="create()" >Create</button>
+                            <button type="button" class="btn btn-warning" ng-click="update()" >Update</button>
+                            <button type="button" class="btn btn-danger" ng-click="delete()" >Delete</button>
+                        </div>
+                    </div>
+                </form>-->
+            </div>
+        </div>
+    </div>
+</div>

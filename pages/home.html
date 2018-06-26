@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<div id="formMainPage" ng-controller="HomeController">
+    <div class="header-container">
+        <h1>Edit Master</h1>
+        <div class="clearfix"></div>
+    </div>
+    <div class="menu-style" id="menuLayout">
+        <ul class="topnav" id="myTopnav">
+            <li id="Company">
+                <a href="#/home/company">Company</a>
+            </li>
+            <li id="staff">
+                <a href="#/home/staff">Staff</a>
+            </li>
+            <li id="user">
+                <a href="#/home/user">User</a>
+            </li>
+            <li id="mnuLogOut"><a href="" ng-click="logout()">Logout</a></li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="main-container">
+        <!--Add content page on hear-->
+        <!--use ng-view-->
+        <!-- <div ng-view class="main-container-page">
+
+         </div>-->
+        <!--use ui-view-->
+        <div ui-view class="main-container-page">
+
+        </div>
+    </div>
+    <footer class="footer-container">
+        <label>ＶＯＣ（AmagumoLabs）</label>
+        <label class="float-right">Version 0.0.0.1</label>
+        <div class="clearfix"></div>
+    </footer>
+</div>

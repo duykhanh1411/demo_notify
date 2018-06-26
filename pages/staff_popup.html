@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<div class="row" ng-controller="StaffPopupController" data-ng-init="init()">
+    <div class="modal modal-wide fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" id="closeModal" ng-click="close()" class="close"></button>
+                    <h4 class="modal-title">Edit Staff</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="formCompany" class="form-horizontal">
+                        <div>
+                            <div class="form-section form-section-custom"></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">ID</label>
+                                        <div class="col-md-9">
+                                            <!-- <div class="input-icon left">-->
+                                            <input type="text" ng-model="data.id" id="id" name="id"
+                                                   class="form-control form-control-custom"
+                                                   disabled/>
+                                            <!--<i class="fa fa-key"></i>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">Date Of Birth</label>
+                                        <div class="col-md-9">
+                                            <!--<div class="input-icon left">-->
+                                            <input type="date" class="date form-control no-spin form-control-custom"
+                                                   ng-model="data.dateOfBirthValue"
+                                                   id="dateOfBirthValue" name="dateOfBirthValue"
+                                                   maxlength="10"/>
+                                            <div class="form-control-focus"></div>
+                                            <!--<i class="fa fa-calendar"></i>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">Company Name</label>
+                                        <div class="col-md-9">
+                                            <!--<div class="input-icon left">-->
+                                            <select name="companyIdCBB" class="form-control form-control-custom"
+                                                    id="companyIdCBB"
+                                                    ng-options="option.name for option in listCompanyForCB track by option.id"
+                                                    ng-model="companyIdCBB">
+                                            </select>
+                                            <div class="form-control-focus"></div>
+                                            <!--<i class="fa fa-briefcase"></i>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">First Name</label>
+                                        <div class="col-md-9">
+                                            <!--<div class="input-icon left">-->
+                                            <input type="text" class="form-control form-control-custom"
+                                                   ng-model="data.firstname"
+                                                   id="firstname"
+                                                   name="firstname" maxlength="9"/>
+                                            <div class="form-control-focus"></div>
+                                            <!--<i class="glyphicon glyphicon-user"></i>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">Note</label>
+                                        <div class="col-md-9">
+                                            <!--<div class="input-icon left">-->
+                                            <textarea type="text"
+                                                      class="form-control form-control-custom text-area-custom"
+                                                      rows="5" ng-model="data.note" id="note" name="note"
+                                                      maxlength="250">
+                                                </textarea>
+                                            <div class="form-control-focus"></div>
+                                            <!--<i class="fa fa-question"></i>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="custom-label control-label-custom col-md-3">Last Name</label>
+                                        <div class="col-md-9">
+                                            <!--<div class="input-icon left">-->
+                                            <input type="text" class="form-control form-control-custom"
+                                                   ng-model="data.lastName"
+                                                   id="lastName"
+                                                   name="lastName" maxlength="9"/>
+                                            <div class="form-control-focus"></div>
+                                            <!--<i class="glyphicon glyphicon-user"></i>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div id="uploadFile" class="form-group form-md-line-input">
+                                        <label class="custom-label col-md-3 control-label-custom">Image</label>
+                                        <div class="col-md-9">
+                                            <div class="input-group ">
+                                                <!--<div class="input-icon left">-->
+                                                <input type='file' file-model="myFile"
+                                                       class="form-control text-image-upload"
+                                                       id="myFile"/>
+                                                <span id='val'
+                                                      class="form-control form-control-custom text-image-overflow"></span>
+                                                <!--<i class="glyphicon glyphicon-picture"></i>-->
+                                                <!--</div>-->
+                                                <span id='button' class="btn green input-group-btn btn-right"
+                                                      ng-click="selectUploadFile()">Select</span>
+                                            </div>
+                                            <br/>
+                                            <img id="imagePreView" class="image-pre-view" ng-model="image"
+                                                 ng-src="{{thumbnail.dataUrl}}"/>
+                                            <br/>
+                                            <div ng-add-html content-html="dataBtnRemoveImagePreView"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <!--/row-->
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="createBtn" class="btn green" ng-click="create()">Create</button>
+                    <button type="button" id="updateBtn" class="btn btn-warning" ng-click="update()">Update</button>
+                    <button type="button" id="deleteBtn" class="btn btn-danger" ng-click="delete()">Delete</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="col-md-12 ">
+        <div class="portlet box">
+            <div class="portlet-title portlet-title-custom">
+                <div class="caption page-title page-title-custom">
+                    <h3>Staff Master</h3>
+                </div>
+                <div class="tools">
+                </div>
+            </div>
+            <div class="portlet-body portlet-body-custom form">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <button class="btn sbold green" ng-click="showPopupCreate()"> Add New
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-table margin-left table-responsive-custom">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th style="min-width: 50px"><i class="fa fa-key"></i> Id</th>
+                            <th style="min-width: 115px"><i class="fa fa-calendar"></i> Date Of Birth</th>
+                            <th style="min-width: 105px"><i class="glyphicon glyphicon-user"></i> First Name</th>
+                            <th style="min-width: 105px"><i class="glyphicon glyphicon-user"></i> Last Name</th>
+                            <th><i class="fa fa-question"></i> Note</th>
+                            <th style="min-width: 135px"><i class="fa fa-briefcase"></i> Company Name</th>
+                            <th style="min-width: 105px"><i class="glyphicon glyphicon-picture"></i> Image</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="staff in listStaff" ng-click="selectedRow(staff)" id="row_id_{{staff.id}}">
+                            <td>{{staff.id}}</td>
+                            <td style="max-width: 100px">{{staff.dateOfBirth}}</td>
+                            <td>{{staff.firstname}}</td>
+                            <td>{{staff.lastName}}</td>
+                            <td class="text-table-overflow-ellipsis" style="max-width: 100px">{{staff.note}}</td>
+                            <td>{{staff.companyName}}</td>
+                            <td><img class="img-circle image-table-view" ng-src="{{staff.imageUrl}}"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div ng-add-html content-html="dataPagingHtml" class="paging-container margin-left"></div>
+                <div class="clearfix"></div>
+                <div class="space-style"></div>
+            </div>
+        </div>
+    </div>
+</div>

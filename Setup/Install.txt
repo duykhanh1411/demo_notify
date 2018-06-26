@@ -1,0 +1,9 @@
+Create database by file UpdateSQL.sql
+Link start: http://localhost:8080/learning_Angular_api/firstView.php
+User name and password login:
+
+Id:test3
+pass:123456
+
+Id:test
+pass:123456
