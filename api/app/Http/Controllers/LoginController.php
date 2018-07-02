@@ -103,7 +103,8 @@ class LoginController extends BaseController
 
         $notificationBuilder = new PayloadNotificationBuilder('my title khanh huynh');
         $notificationBuilder->setBody('Hello world ^_^')
-            ->setSound('default');
+            ->setSound('default')
+            ->setTag('khanh');
 
         $dataBuilder = new PayloadDataBuilder();
         $dataBuilder->addData(['a_data' => 'my_data']);
@@ -112,7 +113,8 @@ class LoginController extends BaseController
         $notification = $notificationBuilder->build();
         $data = $dataBuilder->build();
 
-        $token = "fQ42gOrbElY:APA91bFVv0rfb74VQYL_a7Ld1SNHQIdRXl6GN64n5TEaXYR20ratv7gRJSkYV_KbD3afz4J9qFIGi5XO1bVyO9gYn9sJw5H89hawOrNl1HLllLRk5fdh9DsILdsnyNwQ4WXgQ6oclE2e_jnAF6hNBYvsa9RIVBWHpw";
+        $token = "ckGXJTfjPKQ:APA91bE7PVx-NPQBwoj8GM1sQ5xIKdyF0T-s1SY0gOJad0hvrVBT1aNfPqX8cJZZCrO_y-iEjWc4XcFvCXpUwpVXzFgnw5uTxd-jU7ZCz8XmG4VnW5dasfGuZNL9VMC53pQTpYXUrmtSj1nt7uIiC5bTLHJn58pxYA";
+        //$token = "fV9LHRz4_UQ:APA91bFv7tvNQnx5j2VlqqE9hxlg_uh_sqNjZhs_RVVA7NPkazyJz6Z8gs2KdU8yhLSsxGSvLBARO-AOi-tHx5jfz8R55wdBDmlg9pGsxK9jD2VjdzalXNEZScSP52DCEmuLbFL4ZIe0_6W_iL36W74phm-wrUnCtg";
 
         $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
 
