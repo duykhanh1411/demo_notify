@@ -50,7 +50,7 @@ app.controller("CompanyController", function ($rootScope, $scope, $http, $filter
     $scope.export = function () {
         //Submit form download excel
         angular.element(document.querySelector('#exportExcel')).submit();
-    }
+    };
 
     /*onClick paging*/
     $scope.getPaging = function (page) {

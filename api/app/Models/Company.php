@@ -13,6 +13,7 @@ use App\Models\Interfaces\ICompanyInterface;
 use Illuminate\Support\Facades\DB;
 use Mockery\Exception;
 use Excel;
+use PHPExcel_Worksheet_PageSetup;
 use \stdClass;
 
 class Company extends BaseModel implements ICompanyInterface
@@ -168,7 +169,7 @@ class Company extends BaseModel implements ICompanyInterface
         }
 
         // Generate and return the spreadsheet
-        Excel::create('company', function ($excel) use ($companyArray) {
+        \Maatwebsite\Excel\Facades\Excel::create('company', function ($excel) use ($companyArray) {
             // Set the spreadsheet title, creator, and description
             $excel->setTitle('Company');
             $excel->setCreator('Laravel')->setCompany('AmagumoLab');
@@ -192,9 +193,13 @@ class Company extends BaseModel implements ICompanyInterface
                     $cells->setBorder('solid', 'solid', 'solid', 'solid');
                     // manipulate the range of cells
                 });
+                $sheet->setWidth('F', 100);
                 $sheet->setBorder('A1:F' . count($companyArray), 'thin');
+                $sheet->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
                 /*$sheet->rows($companyArray);*/
             });
+        /*})->download('xlsx');*/
         })->download('pdf');
+        /*})->download('csv');*/
     }
 }

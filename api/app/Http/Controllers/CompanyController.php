@@ -67,6 +67,7 @@ class CompanyController extends Controller
         }
         return response()->json($result);
     }
+
     public function exportExcel(){
         try{
             $this->companyBl->func_exportExcel();

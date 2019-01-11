@@ -100,6 +100,8 @@ class LoginController extends BaseController
     public function notify(Request $request) {
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
+        $optionBuilder->setPriority("high");
+
 
         $notificationBuilder = new PayloadNotificationBuilder('my title khanh huynh');
         $notificationBuilder->setBody('Hello world ^_^')
@@ -107,14 +109,15 @@ class LoginController extends BaseController
             ->setTag('khanh');
 
         $dataBuilder = new PayloadDataBuilder();
-        $dataBuilder->addData(['a_data' => 'my_data']);
+        $dataBuilder->addData(['a_data' => 'khanhHD-1']);
 
         $option = $optionBuilder->build();
         $notification = $notificationBuilder->build();
         $data = $dataBuilder->build();
 
-        $token = "ckGXJTfjPKQ:APA91bE7PVx-NPQBwoj8GM1sQ5xIKdyF0T-s1SY0gOJad0hvrVBT1aNfPqX8cJZZCrO_y-iEjWc4XcFvCXpUwpVXzFgnw5uTxd-jU7ZCz8XmG4VnW5dasfGuZNL9VMC53pQTpYXUrmtSj1nt7uIiC5bTLHJn58pxYA";
-        //$token = "fV9LHRz4_UQ:APA91bFv7tvNQnx5j2VlqqE9hxlg_uh_sqNjZhs_RVVA7NPkazyJz6Z8gs2KdU8yhLSsxGSvLBARO-AOi-tHx5jfz8R55wdBDmlg9pGsxK9jD2VjdzalXNEZScSP52DCEmuLbFL4ZIe0_6W_iL36W74phm-wrUnCtg";
+        //$token = "eMEvJ6Dy8QQ:APA91bEaRGbeVYVoJgY_shPeHPo9-F6ELcqegxo3hUkn8Zxzn58MzcPpuLhcQUO2Qj_Q3wVfKjPkEpdM83kQkpxblp-5JPDxwquTw2rTFTVfJOjLy-HcWKdI-DtOVM2xjP-xXwKY9eI8";
+        //$token = "cLkvuHh_6UE:APA91bHmNXThe7xnydyvEtsXlel20-vNSzhKpKfkXcVY552YK3iD7eLxHsXPp8gd7qFh2lt7lXHE-bMZR8v7CizuOKA51BHaOcau2XZTwXUkydoJejDzcEC2WdoB-yVBQuw7CVDI1J3W";
+        $token = "c0BbhnezQH0:APA91bHe_n-o6VBJ8FFzIOV0IWfWq6mwAMfJpJEEmsbCK-aBQ1tY7xtSifNZnMYJo_NEFfj18Dc-qwtChCEHJRuahZCC1b2am9UleTe_vpvCJW_8FXjCgbmOA2pZLIqO6sC8zN5gOlsud";
 
         $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
 
